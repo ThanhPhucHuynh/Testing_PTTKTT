@@ -42,8 +42,8 @@ int PhanHoach1(recordtype a[],int i,int j,keytype chot){
 	L=i;
 	R=j;
 	while(L<=R){
-		while(a[L].key>=chot) L++;
-		while(a[R].key<chot) R--;
+		while(a[L].key<chot) L++;
+		while(a[R].key>=chot) R--;
 		if(L<R) swap(a[L],a[R]);
 	}
 	return L;

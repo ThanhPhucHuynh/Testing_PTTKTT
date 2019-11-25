@@ -203,3 +203,39 @@ int timchot(recotype a[],int i,int j){
 	while()
 
 }
+
+
+
+
+int timchot(recotype a[],int i,int j){
+	keytype fristKey = a[i].key;
+	int k=i+1;
+	while(k<=j&&a[k].key==fristKey) k++;
+	if(a[k].key>fristKey) return k;
+	else if(k>j) return -1;
+	else return i;
+}
+int PhanHoach(recotype a[],int i,int j,keytype pivote){
+	int R,L;
+	L=i;
+	R=j;
+	while(L<=R){
+		while(a[L].key<pivote) L++;
+		while(a[R].key>=pivote)	R--;
+		if(L<R) swap(a[L],a[R]);
+	}
+	return L;
+}
+void qiuck(recotype a[], int i,int j){
+	keytype fristKey;
+	int index;
+	index = timchot(a,i,j);
+	while(fristKey!=-1){
+		fristKey=a[index].key;
+		
+		index = PhanHoach(a,i,j,fristKey);
+		qiuck(a,i,index-1);
+		qiuck(a,index,j);
+	}
+}
+
