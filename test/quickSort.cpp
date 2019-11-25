@@ -37,7 +37,18 @@ int PhanHoach(recordtype a[],int i,int j,keytype chot){
 	return L;
 
 }
+int PhanHoach1(recordtype a[],int i,int j,keytype chot){ 
+	int L,R;
+	L=i;
+	R=j;
+	while(L<=R){
+		while(a[L].key>=chot) L++;
+		while(a[R].key<chot) R--;
+		if(L<R) swap(a[L],a[R]);
+	}
+	return L;
 
+}
 void Quick(recordtype a[],int i,int j){
 	keytype chot;
 	int chotindex,t;
@@ -45,7 +56,7 @@ void Quick(recordtype a[],int i,int j){
 	if(chotindex!=-1){
 		//PhanHoach(a,i,chot);
 		chot=a[chotindex].key;
-		t=PhanHoach(a,i,j,chot);
+		t=PhanHoach1(a,i,j,chot);
 		Quick(a,i,t-1);
 		Quick(a,t,j);
 	}
